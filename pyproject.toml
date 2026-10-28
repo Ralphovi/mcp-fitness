@@ -34,6 +34,9 @@ mcp-garmin = { workspace = true }
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+# pytest-asyncio warns when this is unset, and filterwarnings = error turns
+# that warning into a failure. No fixture uses a wider scope.
+asyncio_default_fixture_loop_scope = "function"
 # importlib import mode lets us collect tests from sibling packages
 # that share filenames (e.g. each package has its own test_server.py)
 # without the legacy rootdir/__init__ collisions.
